@@ -18,7 +18,6 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   String time = '';
   String date = '';
-  String amPm = '';
   bool success = false;
   List<String> countries = [
     'Asia/Vientiane',
@@ -92,16 +91,10 @@ class _MyAppState extends State<MyApp> {
             return formatter.format(parsedDateTime);
           }
 
-          String extractAmPm() {
-            DateFormat formatter = DateFormat('a');
-            return formatter.format(parsedDateTime);
-          }
-
           setState(() {
             date = extractDate();
             time = extractTime();
-            amPm = extractAmPm();
-            print(amPm);
+
           });
 
           success = true; // Set success to true to exit the loop
@@ -146,7 +139,7 @@ class _MyAppState extends State<MyApp> {
                       : Column(
                           children: [
                             Text(
-                              "$time $amPm",
+                              "$time '",
                               style: TextStyle(
                                 fontSize: 30,
                                 fontWeight: FontWeight.bold,
